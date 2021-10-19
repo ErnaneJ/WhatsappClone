@@ -86,3 +86,7 @@ header {
 .contentarea{
   flex: 1;
 }
+.listening{transition: 1s all ease; animation: listening 1.5s infinite}
+@keyframes listening {
+  50%{color: #919191}
+}

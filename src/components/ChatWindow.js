@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
 import SearchIcon from '@material-ui/icons/Search';
@@ -11,6 +12,17 @@ import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
 export default () => {
+
+  const [emojiOpen, setEmojiOpen] = useState(false);
+  const [text, setText] = useState('');
+  const handleEmojiPicker = (e, emojiObject) =>  setText( text + emojiObject.emoji );
+  const handleOpenEmojiPicker = () => setEmojiOpen(!emojiOpen);
+  const handleMicClick = () => {
+
+  };
+  const handleSendClick = () => {
+
+  };
   return (
     <div className="ChatWindow">
       <div className="ChatWindow--header">
@@ -26,17 +38,24 @@ export default () => {
       </div>
 
       </div>
-      <div className="ChatWindow--body">
+      <div className="ChatWindow--body"></div>
+      <div className="ChatWindow--emojiArea" style={{height: emojiOpen ? '320px' : '0px'}}>
+        <EmojiPicker disableSearchBar onEmojiClick={handleEmojiPicker} disableSkinTonePicker/>
       </div>
       <div className="ChatWindow--footer">
         <div className="ChatWindow--pre">
-          <div className="ChatWindow--btn"><InsertEmoticonIcon style={{color: '#919191'}}/></div>
+          <div className="ChatWindow--btn" onClick={handleOpenEmojiPicker} style={{width: emojiOpen ? '40px':'0'}}><CloseIcon style={{color: '#919191'}}/></div>
+          <div className="ChatWindow--btn" onClick={handleOpenEmojiPicker}><InsertEmoticonIcon style={{color: emojiOpen ? '#009688' : '#919191'}}/></div>
         </div>
         <div className="ChatWindow--inputArea">
-          <input className="ChatWindow--input" placeholder="Digite uma mensagem.." type="text"/>
+          <input className="ChatWindow--input" placeholder="Digite uma mensagem.." type="text" value={text} onChange={e=>{setText(e.target.value)}}/>
         </div>
         <div className="ChatWindow--pos">
-          <div className="ChatWindow--btn"><SendIcon style={{color: '#919191'}}/></div>
+          {text == '' &&
+            <div className="ChatWindow--btn" onClick={handleMicClick}><MicIcon style={{color: '#919191'}}/></div>
+          }{text != '' &&
+            <div className="ChatWindow--btn" onClick={handleSendClick}><SendIcon style={{color: '#919191'}}/></div>
+          }
         </div>
       </div>
     </div>

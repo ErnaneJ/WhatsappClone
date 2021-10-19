@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+* {box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: #D2DBDC;
+  margin: 0;
+  font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-window{
   display: flex;
+  height: 100vh;
+  background-color: #EDEDED;
+}
+
+/* Sirebar */
+.sidebar{
+  width: 35%;
+  max-width: 415px;
+  display:flex;
   flex-direction: column;
+  border-right: 1px solid #DDD;
+}
+
+header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 15px;
+}
+.header--avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.header--buttons{
+  display:flex;
+}
+.header--btn{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+/* search */
+.search {
+  background-color: #F6F6F6;
+  border-bottom: 1px splid #EEE;
+  padding: 5px 15px;
+}
+.search--input {
+  background-color: #FFF;
+  height: 40px;
+  border-radius: 20px;
+  display:flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search--input input{
+  flex: 1;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  margin-left: 10px;
+}
+
+/* chatList */
+.chatlist{
+  flex: 1;
+  background-color: #FFF;
+  overflow-y: auto;
+}
+.chatlist::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+.chatlist::-webkit-scrollbar-thumb{
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.contentarea{
+  flex: 1;
 }

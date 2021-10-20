@@ -14,6 +14,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 
 export default () => {
+  // const [user, setUser] = useState({id: 'q30l74XhDVfvTRdTof2sI5sqRM42', name: 'Ernane Ferreira', avatar: 'https://graph.facebook.com/140897651599162/picture'});
   const [user, setUser] = useState(null);
   const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});

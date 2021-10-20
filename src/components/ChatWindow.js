@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Api from '../Api';
 import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
@@ -13,7 +14,7 @@ import MicIcon from '@material-ui/icons/Mic';
 
 import MessageItem from './MessageItem';
 
-export default ({user}) => {
+export default ({user, data}) => {
 
   const body = useRef();
 
@@ -25,36 +26,20 @@ export default ({user}) => {
   const [emojiOpen, setEmojiOpen] = useState(false);
   const [text, setText] = useState('');
   const [listening, setListening] = useState(false);
-  const [list, setList] = useState([
-    {author: 123456, body: "Ola, tudo bom??"},
-    {author: 1234, body: "Ola, tudo bom?? HAHA"},
-    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
-    {author: 123456, body: "Ola, tudo Ola, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHbom??"},
-    {author: 1234, body: "Ola, tudo bom?? HAHA"},
-    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
-    {author: 1234, body: "Ola, tOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHudo bom??"},
-    {author: 12345, body: "Ola, tudo bom?? HEHEHOla, tudo bom?? HEOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEH"},
-    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
-    {author: 123456, body: "Ola, tuOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHdo bom??"},
-    {author: 123456, body: "Ola, tudo bOla, tudo bom?? HEHEHOla, tudOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHo bom?? HEHEHom??"},
-    {author: 1234, body: "Ola, tudo bom?? HAHA"},
-    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
-    {author: 1234, body: "Ola, tuOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHdo bom??"},
-    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
-    {author: 123456, body: "Ola, tudoOla, tudo bom?? HEHEHOla, tudo bom?? HEHEH bom??"},
-    {author: 1234, body: "Ola, tudo bOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHom?? HAHA"},
-    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
-    {author: 1234, body: "Ola, tudo bOla, tudo bom?? HEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHom??"},
-    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
-    {author: 1234, body: "Ola, tudo boOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHm??"},
-    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
-  ]);
+  const [list, setList] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(()=>{
     if(body.current.scrollHeight > body.current.offsetHeight){
       body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight;
     }
   },[list]);
+
+  useEffect(()=>{
+    setList([]);
+    let unsub = Api.onChatContent(data.chatId, setList, setUsers);
+    return unsub;
+  },[data.chatId]);
   
   const handleEmojiPicker = (e, emojiObject) =>  setText( text + emojiObject.emoji );
   const handleOpenEmojiPicker = () => setEmojiOpen(!emojiOpen);
@@ -67,15 +52,20 @@ export default ({user}) => {
 
     recognition.start();
   };
+  const handleInputKey = e => {if(e.keyCode == 13) handleSendClick()};
   const handleSendClick = () => {
-
+    if(text !== ''){
+      Api.sendMessage(data, user.id, 'text', text, users);
+      setText('');
+      setEmojiOpen(false);
+    }
   };
   return (
     <div className="ChatWindow">
       <div className="ChatWindow--header">
       <div className="ChatWindow--headerinfo">
-        <img className="chatWindow--avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""/>
-        <div className="ChatWindow--name">Ernane Ferreira</div>
+        <img className="chatWindow--avatar" src={data.image} alt=""/>
+        <div className="ChatWindow--name">{data.title}</div>
       </div>
 
       <div className="ChatWindow--headerbuttons">
@@ -99,7 +89,7 @@ export default ({user}) => {
           <div className="ChatWindow--btn" onClick={handleOpenEmojiPicker}><InsertEmoticonIcon style={{color: emojiOpen ? '#009688' : '#919191'}}/></div>
         </div>
         <div className="ChatWindow--inputArea">
-          <input className="ChatWindow--input" placeholder="Digite uma mensagem.." type="text" value={text} onChange={e=>{setText(e.target.value)}}/>
+          <input className="ChatWindow--input" placeholder="Digite uma mensagem.." type="text" value={text} onChange={e=>{setText(e.target.value)}} onKeyUp={handleInputKey}/>
         </div>
         <div className="ChatWindow--pos">
           {text === '' &&

@@ -1,4 +1,4 @@
-import React, {useState, usseEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Api from './Api';
 import './App.css'
 
@@ -18,10 +18,17 @@ export default () => {
   const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
   const [showNewChat, setShowNewChat] = useState(false);
+  
+  useEffect(() => {
+    if(user !== null){
+      let unsub = Api.onChatList(user.id, setChatList);
+      return unsub;
+    }
+  },[user]);
+
   const handleNewChat = () => setShowNewChat(!showNewChat);
 
   const handleLoginData = async (u) => {
-    console.log("Usuario: ",u)
     let newUser = {
       id: u.uid,
       name: u.displayName,
@@ -74,6 +81,7 @@ export default () => {
         {activeChat.chatId !== undefined &&
           <ChatWindow
             user={user}
+            data={activeChat}
           />
         }
         {activeChat.chatId === undefined &&

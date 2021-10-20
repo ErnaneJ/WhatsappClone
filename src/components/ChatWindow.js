@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
@@ -11,7 +11,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
-export default () => {
+import MessageItem from './MessageItem';
+
+export default ({user}) => {
+
+  const body = useRef();
 
   let recognition = null;
   let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -21,6 +25,36 @@ export default () => {
   const [emojiOpen, setEmojiOpen] = useState(false);
   const [text, setText] = useState('');
   const [listening, setListening] = useState(false);
+  const [list, setList] = useState([
+    {author: 123456, body: "Ola, tudo bom??"},
+    {author: 1234, body: "Ola, tudo bom?? HAHA"},
+    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
+    {author: 123456, body: "Ola, tudo Ola, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHbom??"},
+    {author: 1234, body: "Ola, tudo bom?? HAHA"},
+    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
+    {author: 1234, body: "Ola, tOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHudo bom??"},
+    {author: 12345, body: "Ola, tudo bom?? HEHEHOla, tudo bom?? HEOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEH"},
+    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
+    {author: 123456, body: "Ola, tuOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHdo bom??"},
+    {author: 123456, body: "Ola, tudo bOla, tudo bom?? HEHEHOla, tudOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHo bom?? HEHEHom??"},
+    {author: 1234, body: "Ola, tudo bom?? HAHA"},
+    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
+    {author: 1234, body: "Ola, tuOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHdo bom??"},
+    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
+    {author: 123456, body: "Ola, tudoOla, tudo bom?? HEHEHOla, tudo bom?? HEHEH bom??"},
+    {author: 1234, body: "Ola, tudo bOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHom?? HAHA"},
+    {author: 123456, body: "Ola, tudo bom?? IHAAA"},
+    {author: 1234, body: "Ola, tudo bOla, tudo bom?? HEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHom??"},
+    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
+    {author: 1234, body: "Ola, tudo boOla, tudo bom?? HEHEHOla, tudo bom?? HEHEHm??"},
+    {author: 12345, body: "Ola, tudo bom?? HEHEH"},
+  ]);
+
+  useEffect(()=>{
+    if(body.current.scrollHeight > body.current.offsetHeight){
+      body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight;
+    }
+  },[list]);
   
   const handleEmojiPicker = (e, emojiObject) =>  setText( text + emojiObject.emoji );
   const handleOpenEmojiPicker = () => setEmojiOpen(!emojiOpen);
@@ -51,7 +85,11 @@ export default () => {
       </div>
 
       </div>
-      <div className="ChatWindow--body"></div>
+      <div ref={body} className="ChatWindow--body">
+        {list.map((item, key)=>(
+          <MessageItem key={key} data={item} user={user} />
+        ))}
+      </div>
       <div className="ChatWindow--emojiArea" style={{height: emojiOpen ? '320px' : '0px'}}>
         <EmojiPicker disableSearchBar onEmojiClick={handleEmojiPicker} disableSkinTonePicker/>
       </div>

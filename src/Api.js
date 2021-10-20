@@ -34,4 +34,28 @@ export default {
     });
     return list;
   },
+  addNewChat: async (user, userChat) => {
+    let newChat = await db.collection('chats').add({
+      messages: [],
+      users: [user.id, userChat.id]
+    });
+
+    db.collection('users').doc(user.id).update({
+      chats: firebase.firestore.FieldValue.arrayUnion({
+        chatId: newChat.id,
+        title: userChat.name,
+        image: userChat.avatar,
+        with: userChat.id
+      })
+    });
+    
+    db.collection('users').doc(userChat.id).update({
+      chats: firebase.firestore.FieldValue.arrayUnion({
+        chatId: newChat.id,
+        title: user.name,
+        image: user.avatar,
+        with: user.id
+      })
+    });
+  }
 }

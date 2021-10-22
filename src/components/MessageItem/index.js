@@ -24,13 +24,14 @@ export default function MessageItem({data, user}){
     >
       <div className="messageItem"
       style={{
-        backgroundColor: user.id === data.author ? '#DCF8C6' : '',
+        backgroundColor: user.id === data.author ? '#1EBE71' : '#F2F2F2',
+        color: user.id === data.author ? '#fff' : 'black',
         borderBottomRightRadius: user.id === data.author ? '0' : '10px',
         borderBottomLeftRadius: user.id !== data.author ? '0' : '10px'
       }}
       >
         <div className="messageText">{data.body}</div>
-        <div className="messageDate">{time}</div>
+        <div className="messageDate" style={{color: user.id === data.author ? '#fff' : '#888',}}>{time}</div>
       </div>
     </div>
   );

@@ -1,40 +1,19 @@
 .newChat{
-  width: 35%;
-  max-width: 415px;
+  width: 27%;
+  max-width: 335px;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 80px;
+  top: 60px;
+  border-radius: 20px;
   bottom: 0;
   background-color:#FFF;
   display:flex;
   flex-direction: column;
-  border-right: 1px solid #DDD;
   transition: all ease .3s;
 }
-.newChat--head{
-  display:flex;
-  background-color: #00BFA5;
-  align-items: center;
-  padding: 60px 15px 15px 15px;
+.topo-transparent{
+  background-color:transparent !important;
 }
-.newChat--backbutton{
-  width: 40px;
-  width: 40px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.newChat--headTitle{
-  font-size: 19px;
-  height: 40px;
-  line-height: 40px;
-  flex: 1;
-  font-weight: bold;
-  color: #FFF;
-  margin-left: 20px;
-}
-
 .newChat--list{
   flex: 1;
   overflow-y: auto;
@@ -47,7 +26,6 @@
 .newChat--list::-webkit-scrollbar-thumb{
   background-color: rgba(0, 0, 0, .2);
 }
-
 .newChat--item{
   display: flex;
   align-items: center;
@@ -64,4 +42,15 @@
 .newChat--itemName{
   font-size: 17px;
   color: #000;
+}
+.sidebar--chatlist-top{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.sidebar--chatlist-top h1{
+  font-size: 20px;
 }

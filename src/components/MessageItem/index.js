@@ -18,13 +18,15 @@ export default function MessageItem({data, user}){
     <div className="messageLine"
 
     style={{
-      justifyContent: user.id === data.author ? 'flex-end' : 'flex-start'
+      justifyContent: user.id === data.author ? 'flex-end' : 'flex-start',
     }}
     
     >
       <div className="messageItem"
       style={{
-        backgroundColor: user.id === data.author ? '#DCF8C6' : ''
+        backgroundColor: user.id === data.author ? '#DCF8C6' : '',
+        borderBottomRightRadius: user.id === data.author ? '0' : '10px',
+        borderBottomLeftRadius: user.id !== data.author ? '0' : '10px'
       }}
       >
         <div className="messageText">{data.body}</div>

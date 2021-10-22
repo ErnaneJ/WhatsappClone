@@ -10,6 +10,7 @@
   display:flex;
   flex-direction: column;
   transition: all ease .3s;
+  z-index: 2;
 }
 .topo-transparent{
   background-color:transparent !important;
@@ -43,6 +44,16 @@
   font-size: 17px;
   color: #000;
 }
+.newChat--closebutton{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.newChat--closebutton:hover{background-color: #F5F5F5;}
 .sidebar--chatlist-top{
   height: 100px;
   width: 100%;

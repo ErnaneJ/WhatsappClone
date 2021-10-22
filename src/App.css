@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;1,400&display=swap');
 * {box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth;}
+*::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}*::-webkit-scrollbar-thumb{
+  background-color: rgba(0, 0, 0, .2);
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
@@ -17,6 +24,8 @@ body {
   align-items: flex-start;
   justify-content: center;
   flex-direction: row;
+  overflow: hidden;
+  max-width: 100%;
 }
 /* Sidebar */
 .sidebar{
@@ -35,6 +44,8 @@ body {
 .sidebar--content{
   display: flex;
   flex-direction: row;
+  height: 90%;
+  max-height: 90%;
 }
 .sidebar--actions{
   display:flex;
@@ -48,6 +59,8 @@ body {
   background-color: #fff;
   flex:1;
   border-radius: 20px 20px 0 0;
+  max-height: 100%;
+  overflow-y:auto;
 }
 
 .sidebar--chatlist-disturb{
@@ -112,14 +125,17 @@ body {
   background-color: #FFF;
   overflow-y: auto;
 }
-.chatlist::-webkit-scrollbar{
-  width: 6px;
-  height: 6px;
+.chat-notfound{
+  width: 100%;
+  height: 70px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all ease .3s;
+  margin-bottom: 20px;
 }
-.chatlist::-webkit-scrollbar-thumb{
-  background-color: rgba(0, 0, 0, .2);
-}
-
 .contentarea{
   flex: 1;
   height: 100%;

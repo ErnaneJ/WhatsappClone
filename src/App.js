@@ -17,11 +17,13 @@ import AddIcon from '@material-ui/icons/Add';
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 
 export default function App() {
-  const [user, setUser] = useState({id: 'q30l74XhDVfvTRdTof2sI5sqRM42', name: 'Ernane Ferreira', avatar: 'https://graph.facebook.com/140897651599162/picture'});
-  //const [user, setUser] = useState(null);
+  //const [user, setUser] = useState({id: 'q30l74XhDVfvTRdTof2sI5sqRM42', name: 'Ernane Ferreira', avatar: 'https://avatars.githubusercontent.com/u/64796733?v=4'});
+  const [user, setUser] = useState(null);
   const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
   const [showNewChat, setShowNewChat] = useState(false);
+
+  
   
   useEffect(() => {
     if(user !== null){
@@ -41,12 +43,13 @@ export default function App() {
     await Api.addUser(newUser);
     setUser(newUser);
   }
+  
   if(user===null) return (<Login onReceive={handleLoginData}/>)
 
   return (
     <div className="app-window">
       <NewChat setActiveChat={setActiveChat} chatList={chatList} user={user} show={showNewChat} setShow={setShowNewChat}/>
-      <TopBar user={user}/>
+      <TopBar user={user} chatList={chatList} setChatList={setChatList}/>
       <div className="MainContent">
         <div className="sidebar">
           <div className="sidebar--topo"></div>
@@ -69,14 +72,24 @@ export default function App() {
               <div className='sidebar--chatlist-disturb'>
                 <NotDisturb/>
               </div>
-              {chatList.map((item, key)=>(
-                <ChatListItem
-                  key={key}
-                  data={item}
-                  active={activeChat.chatId === item.chatId}
-                  onClick={()=>{setActiveChat(item)}}
-                />
-              ))}
+              {chatList.length > 0 &&
+                chatList.map((item, key)=>(
+                  <ChatListItem
+                    key={key}
+                    data={item}
+                    active={activeChat.chatId === item.chatId}
+                    onClick={()=>{setActiveChat(item)}}
+                  />
+                ))
+              }{chatList.length === 0 &&
+                <div className="not-chat-search">
+                   <div className="chat-notfound" style={{marginTop: 20}}>
+                    <ForumIcon style={{color: '#ccc', fontSize: 50}}/>
+                    <p className="sidebar--actions-label" style={{color: '#999'}}>Nenhum chat encontrado.</p>
+                </div>
+                </div>
+              }
+              
               <div className="sidebar--chatlist-newChat" onClick={handleNewChat}>
                 <h1>Você chegou ao fim.</h1>
                 <p>Adicione mais amigos!</p>

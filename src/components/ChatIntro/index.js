@@ -1,7 +1,7 @@
 import React from 'react';
 import './ChatIntro.css';
 
-export default () => {
+export default function ChatIntro(){
   return (
     <div className="chatIntro">
       <img src="./intro-wpp.jpg" alt=""/>

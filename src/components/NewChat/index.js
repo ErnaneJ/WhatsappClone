@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Api from '../Api';
+import Api from '../../db/Api';
 import './NewChat.css';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-export default ({user, chatList, show, setShow}) => {
+export default function NewChat({setActiveChat, user, show, setShow}){
 
   const [list, setList] = useState([]);
 
@@ -18,7 +18,7 @@ export default ({user, chatList, show, setShow}) => {
 
   const handleClose = () => setShow(!show);
   const addNewChat = async userChat => {
-    await Api.addNewChat(user, userChat);
+    await Api.addNewChat(user, userChat, setActiveChat);
     handleClose();
   };
   return (

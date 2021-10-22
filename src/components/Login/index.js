@@ -1,8 +1,7 @@
 import React from 'react';
-import './MessageItem.css';
-import Api from '../Api.js';
+import Api from '../../db/Api.js';
 
-export default ({onReceive}) => {
+export default function Login({onReceive}){
   const handleFacebookLogin = async ()=>{
     let result = await Api.fbPopup();
     if(result){onReceive(result.user)}

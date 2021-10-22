@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Api from '../Api';
+import Api from '../../db/Api';
 import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
@@ -12,9 +12,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
-import MessageItem from './MessageItem';
+import MessageItem from '../MessageItem';
 
-export default ({user, data}) => {
+export default function ChatWindow({user, data}){
 
   const body = useRef();
 
@@ -52,7 +52,7 @@ export default ({user, data}) => {
 
     recognition.start();
   };
-  const handleInputKey = e => {if(e.keyCode == 13) handleSendClick()};
+  const handleInputKey = e => {if(e.keyCode === 13) handleSendClick()};
   const handleSendClick = () => {
     if(text !== ''){
       Api.sendMessage(data, user.id, 'text', text, users);

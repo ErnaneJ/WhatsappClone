@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Api from './Api';
+import Api from './db/Api';
 import './App.css'
 
 import ChatListItem from './components/ChatListItem';
@@ -13,9 +13,9 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 
-export default () => {
-  // const [user, setUser] = useState({id: 'q30l74XhDVfvTRdTof2sI5sqRM42', name: 'Ernane Ferreira', avatar: 'https://graph.facebook.com/140897651599162/picture'});
-  const [user, setUser] = useState(null);
+export default function App() {
+  const [user, setUser] = useState({id: 'q30l74XhDVfvTRdTof2sI5sqRM42', name: 'Ernane Ferreira', avatar: 'https://graph.facebook.com/140897651599162/picture'});
+  //const [user, setUser] = useState(null);
   const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
   const [showNewChat, setShowNewChat] = useState(false);
@@ -27,7 +27,7 @@ export default () => {
     }
   },[user]);
 
-  const handleNewChat = () => setShowNewChat(!showNewChat);
+  const handleNewChat = () => {setShowNewChat(!showNewChat);};
 
   const handleLoginData = async (u) => {
     let newUser = {
@@ -43,7 +43,7 @@ export default () => {
   return (
     <div className="app-window">
       <div className="sidebar">
-        <NewChat chatList={chatList} user={user} show={showNewChat} setShow={setShowNewChat}/>
+        <NewChat setActiveChat={setActiveChat} chatList={chatList} user={user} show={showNewChat} setShow={setShowNewChat}/>
         <header>
           <img className="header--avatar" src={user.avatar} alt="avatar" />
           <div className="header--buttons">

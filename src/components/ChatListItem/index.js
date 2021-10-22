@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ChatListItem.css';
 
-export default ({onClick, data, active}) => {
+export default function ChatListItem({onClick, data, active}){
   const [time, setTime] = useState('');
   
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './MessageItem.css';
 
-export default ({data, user}) => {
+export default function MessageItem({data, user}){
   const [time, setTime] = useState('');
 
   useEffect(() => {
@@ -18,13 +18,13 @@ export default ({data, user}) => {
     <div className="messageLine"
 
     style={{
-      justifyContent: user.id == data.author ? 'flex-end' : 'flex-start'
+      justifyContent: user.id === data.author ? 'flex-end' : 'flex-start'
     }}
     
     >
       <div className="messageItem"
       style={{
-        backgroundColor: user.id == data.author ? '#DCF8C6' : ''
+        backgroundColor: user.id === data.author ? '#DCF8C6' : ''
       }}
       >
         <div className="messageText">{data.body}</div>

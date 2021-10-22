@@ -7,7 +7,7 @@ import firebaseConfig from './firebaseConfig';
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 
-export default {
+const Api =  {
   fbPopup: async () => {
     const provider = new firebase.auth.FacebookAuthProvider();
     let result = await firebaseApp.auth().signInWithPopup(provider);
@@ -34,7 +34,16 @@ export default {
     });
     return list;
   },
-  addNewChat: async (user, userChat) => {
+  addNewChat: async (user, userChat, setActiveChat) => {
+    const chats = await firebase.firestore().collection('chats').get();
+    let chatExist = false;
+    chats.docs.map(doc => {
+      if(doc.data().users.length === 2 && doc.data().users.includes(userChat.id) && doc.data().users.includes(user.id)){
+        chatExist = true;
+        setActiveChat({chatId: doc.id,title: userChat.name,image: userChat.avatar,with: userChat.id});
+      }
+    });
+    if(chatExist) return true;
     let newChat = await db.collection('chats').add({
       messages: [],
       users: [user.id, userChat.id]
@@ -57,6 +66,7 @@ export default {
         with: user.id
       })
     });
+    setActiveChat({chatId: newChat.id,title: userChat.name,image: userChat.avatar,with: userChat.id});
   },
   onChatList: (userId, setChatList) => {
     return db.collection('users').doc(userId).onSnapshot(doc => {
@@ -65,7 +75,7 @@ export default {
         if(data.chats){
           let chats = [...data.chats];
           chats.sort((a,b) => {
-            if(a.lastMessageDate == undefined){
+            if(a.lastMessageDate === undefined){
               return -1;
             }
             if(a.lastMessageDate.seconds < b.lastMessageDate.seconds){
@@ -106,7 +116,7 @@ export default {
       if(uData.chats){
         let chats = [...uData.chats];
         for(let e in chats){
-          if(chats[e].chatId == chatData.chatId){
+          if(chats[e].chatId === chatData.chatId){
             chats[e].lastMessage = body;
             chats[e].lastMessageDate = now;
           }
@@ -119,3 +129,5 @@ export default {
     }
   }
 }
+
+export default Api;

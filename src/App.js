@@ -7,6 +7,7 @@ import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
 import NewChat from './components/NewChat';
 import Login from './components/Login';
+import NotDisturb from './components/NotDisturb';
 
 import TopBar from './components/TopBar';
 
@@ -51,15 +52,22 @@ export default function App() {
           <div className="sidebar--topo"></div>
           <div className="sidebar--content">
             <div className="sidebar--actions">
-            <div className="chatlist--btn"><ForumIcon style={{color: '#1DAB67', fontSize: 40}}/></div>
-              <p className="sidebar--actions-label">Menssagens</p>
-              <div className="chatlist--btn"><LocalPhoneIcon style={{color: '#A5A5A5', fontSize: 40}}/></div>
-              <p className="sidebar--actions-label">Ligações</p>
-              <div className="chatlist--btn"><DonutLargeIcon style={{color: '#A5A5A5', fontSize: 40}}/></div>
-              <p className="sidebar--actions-label">Status</p>
+              <div className="sidebar--actions--btn">
+                <ForumIcon style={{color: '#1DAB67', fontSize: 40}}/>
+                <p className="sidebar--actions-label">Menssagens</p>
+              </div>
+              <div className="sidebar--actions--btn">
+                <LocalPhoneIcon style={{color: '#A5A5A5', fontSize: 40}}/>
+                <p className="sidebar--actions-label">Ligações</p>
+              </div>
+              <div className="sidebar--actions--btn">
+                <DonutLargeIcon style={{color: '#A5A5A5', fontSize: 40}}/>
+                <p className="sidebar--actions-label">Status</p>
+              </div>
             </div>
             <div className="sidebar--chatlist">
               <div className='sidebar--chatlist-disturb'>
+                <NotDisturb/>
               </div>
               {chatList.map((item, key)=>(
                 <ChatListItem

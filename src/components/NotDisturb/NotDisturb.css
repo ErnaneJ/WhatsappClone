@@ -1,0 +1,35 @@
+.label-not-disturb{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.container-toggle{
+  width: 40px;
+  height: 20px;
+  border-radius:20px;
+  background-color:  #C6C6C6;
+  padding: 2px;
+  transition: all ease .3s;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.toggle{
+  transition: all ease .3s;
+  height: 15px;
+  width: 15px;
+  background-color:#F2F2F2;
+  border-radius: 50%;
+  margin-top: 1px;
+  position: absolute;
+}
+.label-not-disturb p{
+  font-size: 14px;
+  color: rgb(117, 117, 117);
+}

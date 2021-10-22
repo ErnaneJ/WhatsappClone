@@ -43,12 +43,6 @@ body {
   width: 80px;
   padding-top:30px;
 }
-.sidebar--actions-label{
-  color: '#A5A5A5';
-  margin-bottom: 30px;
-  font-size: 12px;
-}
-
 .sidebar--chatlist{
   margin-top: -50px;
   background-color: #fff;
@@ -59,6 +53,10 @@ body {
 .sidebar--chatlist-disturb{
   height: 60px;
   width: 100%;
+  padding: 0;
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .sidebar--chatlist-newChat{
   width: 100%;
@@ -90,31 +88,23 @@ body {
   justify-content: center;
   box-shadow: 2px 3px 5px rgba(0,0,0,.2);
 }
-header {
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
+.sidebar--actions-label{
+  color: '#A5A5A5';
+  font-size: 12px;
 }
-.header--avatar{
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-.header--buttons{
+
+.sidebar--actions--btn{
+  width: 100%;
+  height: 70px;
   display:flex;
-}
-.header--btn{
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: all ease .3s;
+  margin-bottom: 20px;
 }
+.sidebar--actions--btn:hover{background-color: #F5F5F5;}
 
 /* chatList */
 .chatlist{

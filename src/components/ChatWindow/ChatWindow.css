@@ -51,7 +51,12 @@
   height: 100%;
   overflow-y: auto;
   background-color: #FCFCFC;
-  padding: 10px 20px
+  border-bottom-left-radius: 10px;
+  box-shadow: inset 0em 0em 1em 2px rgba(0, 0, 0, .2);
+  padding: 10px 20px;
+  background-image: url('https://cdn.wallpapersafari.com/54/0/HluF7g.jpg');
+  background-position: center;
+  background-repeat: repeat;
 }
 .ChatWindow--body::-webkit-scrollbar{
   width: 6px;

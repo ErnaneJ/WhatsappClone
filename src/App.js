@@ -23,12 +23,11 @@ export default function App() {
   const [activeChat, setActiveChat] = useState({});
   const [showNewChat, setShowNewChat] = useState(false);
 
-  
-  
   useEffect(() => {
-    if(user !== null){
-      let unsub = Api.onChatList(user.id, setChatList);
-      return unsub;
+    if(user === null){
+      return setUser(JSON.parse(localStorage.getItem('user')));
+    }if(user !== null){
+      return Api.onChatList(user.id, setChatList);
     }
   },[user]);
 
@@ -38,10 +37,13 @@ export default function App() {
     let newUser = {
       id: u.uid,
       name: u.displayName,
-      avatar: u.photoURL
+      email: u.email,
+      avatar: u.photoURL,
+      provider: u.providerData.providerId
     };
     await Api.addUser(newUser);
-    setUser(newUser);
+    setUser(newUser); 
+    localStorage.setItem('user', JSON.stringify(newUser));
   }
   
   if(user===null) return (<Login onReceive={handleLoginData}/>)
@@ -49,7 +51,7 @@ export default function App() {
   return (
     <div className="app-window">
       <NewChat setActiveChat={setActiveChat} chatList={chatList} user={user} show={showNewChat} setShow={setShowNewChat}/>
-      <TopBar user={user} chatList={chatList} setChatList={setChatList}/>
+      <TopBar user={user} chatList={chatList} setUser={setUser} setChatList={setChatList}/>
       <div className="MainContent">
         <div className="sidebar">
           <div className="sidebar--topo"></div>
@@ -90,10 +92,10 @@ export default function App() {
                 </div>
               }
               
-              <div className="sidebar--chatlist-newChat" onClick={handleNewChat}>
+              <div className="sidebar--chatlist-newChat" >
                 <h1>Você chegou ao fim.</h1>
                 <p>Adicione mais amigos!</p>
-                <div className="sidebar--chatlist--btn-more"><AddIcon style={{color: '#fff', fontSize: 40}}/></div>
+                <div className="sidebar--chatlist--btn-more" onClick={handleNewChat}><AddIcon style={{color: '#fff', fontSize: 40}}/></div>
               </div>
             </div>
           </div>

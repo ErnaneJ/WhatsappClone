@@ -3,7 +3,6 @@ import Api from '../../db/Api';
 import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
-import AttachFileIcon from '@material-ui/icons/AttachFile';
 import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 

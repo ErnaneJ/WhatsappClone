@@ -24,7 +24,7 @@ export default function MessageItem({data, user}){
     >
       <div className="messageItem"
       style={{
-        backgroundColor: user.id === data.author ? '#1EBE71' : '#F2F2F2',
+        backgroundColor: user.id === data.author ? '#1EBE71' : '#FFF',
         color: user.id === data.author ? '#fff' : 'black',
         borderBottomRightRadius: user.id === data.author ? '0' : '10px',
         borderBottomLeftRadius: user.id !== data.author ? '0' : '10px'

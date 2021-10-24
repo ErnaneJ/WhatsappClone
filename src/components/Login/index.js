@@ -49,10 +49,10 @@ export default function Login({onReceive}){
         </div>
       </div>
       <div className="login-main--content">
-        <img src="https://raw.githubusercontent.com/ErnaneJ/To-Do_AppSvelte/main/.github/images/preview.png" alt="preview"/>
+        <img src="./preview.png" alt="preview"/>
       </div>
       <div className="footer">
-        Desenvolvido com ❤️ por <a href="/"> Ernane Ferreira</a>
+        Desenvolvido com ❤️ por <a href="https://ernane-dev.netlify.app/"> Ernane Ferreira</a>
       </div>
     </section>
   );

@@ -13,8 +13,8 @@ const Api =  {
     let result = null;
     try{
       result = await firebaseApp.auth().signInWithPopup(provider);
-    }catch{
-      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }catch(e){
+      console.error('Erro na autenticacao.', e);
     }
     return result;
   },
@@ -23,8 +23,8 @@ const Api =  {
     let result = null;
     try{
       result = await firebaseApp.auth().signInWithPopup(provider);
-    }catch{
-      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }catch(e){
+      console.error('Erro na autenticacao.', e);
     }
     return result;
   },
@@ -33,8 +33,8 @@ const Api =  {
     let result = null;
     try{
       result = await firebaseApp.auth().signInWithPopup(provider);
-    }catch{
-      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }catch(e){
+      console.error('Erro na autenticacao.', e);
     }
     return result;
   },

@@ -13,17 +13,14 @@ export default function Login({onReceive}){
   const handleFacebookLogin = async ()=>{
     let result = await Api.FacebookPopup();
     if(result){onReceive(result.user)}
-    else{console.error('Erro!')}
   }
   const handleGithubLogin = async ()=>{
     let result = await Api.GithubPopup();
     if(result){onReceive(result.user)}
-    else{console.error('Erro!')}
   }
   const handleGoogleLogin = async ()=>{
     let result = await Api.GooglePopup();
     if(result){onReceive(result.user)}
-    else{console.error('Erro!')}
   }
   return (
     <section className="container-login">

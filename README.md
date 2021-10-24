@@ -42,7 +42,7 @@ O projeto teve como finalidade o clone idêntico ao aplicativo de mensagens what
 
 ## 💡 Use
 ### ✔ Acesse
-<a target="_blank" href="https://whatsapp-clone.netlify.app/">Clique aqui</a> para acessar a aplicacao.
+<a target="_blank" href="https://clone-whatsapp.netlify.app/">Clique aqui</a> para acessar a aplicação.
 
 ### ✔ Rode em sua máquina
 
@@ -57,7 +57,7 @@ $ git clone https://github.com/ErnaneJ/WhatsappClone.git
 ```bash
 $ npm install
 ```
-- Inicie a aplicaçã:
+- Inicie a aplicação:
 
 ```bash
 $ npm start

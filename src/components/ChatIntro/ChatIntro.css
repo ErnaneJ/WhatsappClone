@@ -2,10 +2,22 @@
   background-color: #F8F8F8;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   border-bottom: 6px solid #4ADF83;
+}
+.chatIntro--top{
+  height: 60px;
+  width: 100%;
+  background-color: #1EBE71;
+}
+.chatIntro--main{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .chatIntro img{
   width: 250px;

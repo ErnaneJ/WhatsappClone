@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-bottom: 6px solid #4ADF83;
 }
 .ChatWindow--header{
   height: 60px;
@@ -9,11 +10,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #1EBE71;
 }
 .ChatWindow--headerinfo{
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-left: 20px;
 }
 .chatWindow--avatar{
   width: 40px;
@@ -24,7 +27,8 @@
 }
 .ChatWindow--name{
   font-size: 17px;
-  color: black;
+  color: white;
+  font-weight: bold;
 }
 .ChatWindow--headerbuttons{
   display: flex;
@@ -46,11 +50,13 @@
   flex: 1;
   height: 100%;
   overflow-y: auto;
-  background-color: #E5DDD5;
-  background-size: cover;
+  background-color: #FCFCFC;
+  border-bottom-left-radius: 10px;
+  box-shadow: inset 0em 0em 1em 2px rgba(0, 0, 0, .2);
+  padding: 10px 20px;
+  background-image: url('https://cdn.wallpapersafari.com/54/0/HluF7g.jpg');
   background-position: center;
-  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-  padding: 10px 20px
+  background-repeat: repeat;
 }
 .ChatWindow--body::-webkit-scrollbar{
   width: 6px;
@@ -64,6 +70,8 @@
   height: 62px;
   display: flex;
   align-items: center;
+  background-color: #fff;
+  margin-bottom: 35px;
 }
 .ChatWindow--pre{
   display:flex;
@@ -71,13 +79,14 @@
 }
 .ChatWindow--inputArea{
   flex: 1;
+  background-color:#FCFCFC;
 }
 .ChatWindow--input{
   width: 100%;
   height: 40px;
   border: none;
   outline: none;
-  background-color: #FFF;
+  background-color: #efefef;
   border-radius: 20px;
   font-size: 15px;
   color: #4A4A4A;
@@ -86,6 +95,9 @@
 .ChatWindow--pos{
   display: flex;
   margin: 0 15px;
+}
+.btn-send{
+  background-color: #1EBE71;
 }
 
 .ChatWindow--emojiArea{

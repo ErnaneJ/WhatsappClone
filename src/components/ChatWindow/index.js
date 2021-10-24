@@ -3,8 +3,7 @@ import Api from '../../db/Api';
 import EmojiPicker from 'emoji-picker-react';
 import './ChatWindow.css';
 
-import SearchIcon from '@material-ui/icons/Search';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
+import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
@@ -69,9 +68,8 @@ export default function ChatWindow({user, data}){
       </div>
 
       <div className="ChatWindow--headerbuttons">
-        <div className="ChatWindow--btn"><SearchIcon style={{color: '#919191'}}/></div>
-        <div className="ChatWindow--btn"><AttachFileIcon style={{color: '#919191'}}/></div>
-        <div className="ChatWindow--btn"><MoreVertIcon style={{color: '#919191'}}/></div>
+        <div className="ChatWindow--btn"><LocalPhoneIcon style={{color: '#fff'}}/></div>
+        <div className="ChatWindow--btn"><MoreVertIcon style={{color: '#fff'}}/></div>
       </div>
 
       </div>
@@ -93,9 +91,9 @@ export default function ChatWindow({user, data}){
         </div>
         <div className="ChatWindow--pos">
           {text === '' &&
-            <div className="ChatWindow--btn" onClick={handleMicClick}><MicIcon className={ listening ? 'listening' : ''} style={{color: listening ? '#126ECE' : '#919191'}}/></div>
+            <div className={`ChatWindow--btn btn-send  ${listening ? 'listening' : ''}`} onClick={handleMicClick}><MicIcon className={ listening ? 'listening' : ''} style={{color: '#fff'}}/></div>
           }{text !== '' &&
-            <div className="ChatWindow--btn" onClick={handleSendClick}><SendIcon style={{color: '#919191'}}/></div>
+            <div className="ChatWindow--btn btn-send" onClick={handleSendClick}><SendIcon style={{color: '#fff'}}/></div>
           }
         </div>
       </div>

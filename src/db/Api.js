@@ -8,9 +8,34 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 
 const Api =  {
-  fbPopup: async () => {
+  FacebookPopup: async () => {
     const provider = new firebase.auth.FacebookAuthProvider();
-    let result = await firebaseApp.auth().signInWithPopup(provider);
+    let result = null;
+    try{
+      result = await firebaseApp.auth().signInWithPopup(provider);
+    }catch{
+      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }
+    return result;
+  },
+  GithubPopup: async () => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    let result = null;
+    try{
+      result = await firebaseApp.auth().signInWithPopup(provider);
+    }catch{
+      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }
+    return result;
+  },
+  GooglePopup: async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    let result = null;
+    try{
+      result = await firebaseApp.auth().signInWithPopup(provider);
+    }catch{
+      console.error('Erro na autenticacao. Email e igual para provider diferente.')
+    }
     return result;
   },
   addUser: async (u)=>{

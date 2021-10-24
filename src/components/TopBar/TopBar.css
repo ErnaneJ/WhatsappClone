@@ -1,0 +1,113 @@
+.TopBar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1EBE71;
+  height: 60px;
+}
+.container{
+  width: 100%;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  display:flex;
+  align-items: center;
+}
+.logo p{
+  margin-left: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+/* search */
+.search {
+  border-bottom: 1px splid #EEE;
+  padding: 5px 15px;
+  flex: 1;
+  margin: 0 50px;
+  max-width: 700px;
+}
+.search--input {
+  background-color: #1DAB67;
+  height: 40px;
+  border-radius: 20px;
+  display:flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.search--input input{
+  flex: 1;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  margin-left: 10px;
+  color: rgba(255,255,255);
+  font-size: 14px;
+}
+.search--input input::placeholder {
+  color: rgba(255,255,255,.5);
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.profile p{
+  color: white;
+  font-size: 14px;
+}
+.profile img{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.profile--options{
+  opacity: 0;
+  transform: translate(20px, -40px);
+  z-index: -1;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0,0,0,.5);
+  border-radius: 10px;
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  border-top-right-radius: 0;
+  transition: ease all .2s;
+}
+.profile--options--option{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  padding: 5px 10px;
+  transition: ease all .2s;
+}
+.profile--options--option p{
+  color: rgb(124, 124, 124);
+  margin-left: 5px;
+}
+.profile--options--option:hover{
+  background-color: #F5F5F5;
+} 
+.profile--options--option:hover svg{
+  transition: ease all .2s;
+  color: #cf5151 !important;
+} 
+.profile--options.active{
+  opacity: 1 !important;
+  transform: translate(0, 0);
+  z-index: 1;
+}

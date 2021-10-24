@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <strong>Whatsapp Clone <img src="https://icons-for-free.com/iconfiles/png/512/app+global+ios+media+social+whatsapp+icon-1320193331031836611.png" alt="Whatsapp icon" width="20px"/> </strong>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <a href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Use">Use</a>&nbsp;&nbsp;&nbsp;
+</div>
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+<p align="center">
+  <p align="center">
+  <img alt="TWhatsappClone Preview" src=".github/preview.png" width="100%">
+</p>
 
-### `yarn start`
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🚀 Tecnologias
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Esta aplicação foi desenvolvida com as seguintes tecnologias:
 
-### `yarn test`
+- HTML 5
+- CSS 3
+- JavaScript
+- React
+- Firebase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💻 Projeto
+<p>
+Esta aplicação tem como intuito fortificar os conhecimentos adquiridos ao longo do estudo de `ReactJs`. A mesma conta com sistema de mensagens em tempo real e possibilidade de escrita por transcricao via áudio. Os métodos de logins se dão por três tipos:
 
-### `yarn build`
+- Facebook
+- Google
+- Github
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Facilitando assim, o acesso pelo usuario.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O projeto teve como finalidade o clone idêntico ao aplicativo de mensagens whatsapp em sua interface atual. Porem, para ir um pouco além, foi implementado um possível redesign da aplicação como um todo.
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 💡 Use
+### ✔ Acesse
+<a target="_blank" href="https://whatsapp-clone.netlify.app/">Clique aqui</a> para acessar a aplicacao.
 
-### `yarn eject`
+### ✔ Rode em sua máquina
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Clone este repositorio:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+$ git clone https://github.com/ErnaneJ/WhatsappClone.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Instale todas as dependências:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+$ npm install
+```
+- Inicie a aplicaçã:
 
-## Learn More
+```bash
+$ npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### * Se voce desejar implementar ou melhorar alguma feature fique avontade para enviar uma solicitacao de pull. Irei adorar receber!.
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div align="center">
+Desenvolvido com ❤ por <a target="_blank" href="https://ernane-dev.netlify.app/">Ernane Ferreira</a>. 👋🏻<br/>
+<small>Interface baseada na <a href="https://themeui.net/whatsapp-redesign-free-ui-kit-for-figma/">Whatsapp redesign UI KIT</a> desenvolvido por <a href="https://dribbble.com/2muchcoffee">2muchcoffee</a>.<small>
+</div>
